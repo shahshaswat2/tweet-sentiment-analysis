@@ -32,6 +32,7 @@ tweets = tweepy.Cursor(api.search, q=searchKeyword,
                        lang="English").items(TotalSearchKeywords)
 
 # initializating
+# creating some variables to store the analysis info
 positive = 0
 negative = 0
 neutral = 0
@@ -49,16 +50,18 @@ for tweet in tweets:
     elif (analysis.sentiment.polarity > 0.00):
         positive += 1
 
+# taking percentage to find the average
 positive = percentage(positive, TotalSearchKeywords)
 negative = percentage(negative, TotalSearchKeywords)
 neutral = percentage(neutral, TotalSearchKeywords)
 polarity = percentage(polarity, TotalSearchKeywords)
 
-
+# using only two decimal points for float value
 positive = format(positive, '.2f')
 neutral = format(neutral, '.2f')
 negative = format(negative, '.2f')
 
+# printing the statement
 print("This is how tweets for " + searchKeyword +
       " is, after going through " + str(TotalSearchKeywords) + " Tweets. ")
 
